@@ -11,9 +11,9 @@ import lombok.RequiredArgsConstructor;
 public class UserService {
     private final UserRepository userRepository;
 
-    public List<User> getAllUsers(){
-        return userRepository.findAll();
-    }
+    // public List<User> getAllUsers(){
+    //     return userRepository.findAll();
+    // }
 
     public User getUserById(Long id){
         return userRepository.findById(id).get();
