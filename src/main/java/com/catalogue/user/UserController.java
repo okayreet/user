@@ -17,15 +17,15 @@ import lombok.extern.slf4j.Slf4j;
 public class UserController {
     private final UserService userService;
 
-    // @GetMapping("/all")
-    // public ResponseEntity<?> getAllUsers() {
-    //     log.info("request all users available");
-    //     return new ResponseEntity<>(userService.getAllUsers(), HttpStatus.OK);
-    // }
+    @GetMapping("/all")
+    public ResponseEntity<?> getAllUsers() {
+        log.info("request all users available");
+        return new ResponseEntity<>(userService.getAllUsers(), HttpStatus.OK);
+    }
 
     @GetMapping("/{user_id}")
-    public User getUserById(@PathVariable Long User_id) {
-        log.info("request user by ID: {}", User_id);
-        return userService.getUserById(User_id);
+    public User getUserById(@PathVariable Long user_id) {
+        log.info("request user by ID: {}", user_id);
+        return userService.getUserById(user_id);
     }
 }
