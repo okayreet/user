@@ -5,8 +5,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.SequenceGenerator;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
 @Data
@@ -16,19 +15,18 @@ public class User {
     @SequenceGenerator(name = "user_sequence", sequenceName = "user_sequence", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_sequence")
     private Long id;
-    @NotBlank(message = "First Name cannot be blank")
+    @NotNull
     private String firstName;
-    @NotBlank(message = "Last Name cannot be blank")
+    @NotNull
     private String lastName;
-    @NotBlank(message = "Address 1 cannot be blank")
+    @NotNull
     private String address1;
-    @NotBlank(message = "Address 2 cannot be blank")
+    @NotNull
     private String address2;
-    @NotBlank(message = "City cannot be blank")
+    @NotNull
     private String city;
-    @NotBlank(message = "Postcode cannot be blank")
+    @NotNull
     private String postcode;
-    @NotBlank(message = "phoneNumber cannot be blank")
-    @Pattern(regexp = "^\\d{9,15}$", message = "Digit only")
+    @NotNull
     private String phoneNumber;
 }

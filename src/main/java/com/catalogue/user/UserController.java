@@ -1,7 +1,7 @@
 package com.catalogue.user;
 
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import java.util.List;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -21,9 +20,9 @@ public class UserController {
     private final UserService userService;
 
     @GetMapping("/all")
-    public ResponseEntity<?> getAllUsers() {
+    public List<User> getAllUsers() {
         log.info("request all users available");
-        return new ResponseEntity<>(userService.getAllUsers(), HttpStatus.OK);
+        return userService.getAllUsers();
     }
 
     @GetMapping("/{user_id}")
@@ -33,10 +32,11 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public Long register(@Valid @RequestBody User user) {
+    public Long register(@RequestBody User user) {
         log.info("register new user");
         return userService.registerNewUser(user);
     }
+
     @PostMapping("/register2")
     public String register() {
         log.info("register new user");
